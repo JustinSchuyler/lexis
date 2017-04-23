@@ -11,6 +11,30 @@
 "Meine Freunde, ihr müsst nirgendwohin gehen um zu spielen. Ich nehme euch mit und zeige euch Dinge, die ihr die ihr noch nie gesehen habt. Das wäre viel interessanter als weit weg zu schwimmen", sagte Finbo.</p>
       <p>Er schwamm mit seinen Freunden hinauf, nah an die Meeresoberfläche. Und dann sagte er seinen Freunden, dass sie sich nacheinander auf seinen Kopf setzen sollten. Und als er seine Fontäne sprühte, wurden sie aus dem Wasser geschossen, hinaus in die schöne Welt. Sie sahen den Himmel, Vögel, die Sonne, Wolken, Schiffe und weit entfernt gelegene Länder.</p>
       <script>
+
+        function parseSentence(selection) {
+          let beginning = selection.anchorOffset - 1;
+          while (beginning > 0) {
+            if (/[\.!?]/.test(selection.anchorNode.data[beginning])) {
+              break;
+            }
+            beginning -= 1;
+          }
+
+          let ending = selection.focusOffset;
+          while (ending < selection.anchorNode.length) {
+            if (/[\.!?]/.test(selection.anchorNode.data[ending])) {
+              break;
+            }
+            ending += 1;
+          }
+
+          let sentence = selection.anchorNode.data.substring(beginning, ending + 1);
+          sentence = sentence.replace(/^[\.!?][\s]*/, "");
+
+          return sentence;
+        }
+
         document.body.addEventListener('mouseup', _ => {
           let selection = window.getSelection();
 
@@ -19,12 +43,16 @@
                 context = selection.anchorNode.data,
                 url = window.location.href;
 
+            let sentence = parseSentence(selection);
+
             console.log(selection);
             console.log(word);
             console.log(context);
+            console.log(sentence);
             console.log(url);
           }
         });
+
       </script>
     </body>
 </html>

@@ -11,7 +11,8 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["app.js"]
+      "js": ["panel.js", "app.js"],
+      "css": ["app.css"]
     }
   ]
 }

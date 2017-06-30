@@ -22,6 +22,7 @@ function parseSentence(selection) {
 }
 
 document.body.addEventListener('mouseup', () => {
+  let panel = document.querySelector('#lexis-panel');
   let selection = window.getSelection();
 
   if (selection.anchorOffset !== selection.focusOffset) {
@@ -31,10 +32,22 @@ document.body.addEventListener('mouseup', () => {
 
     let sentence = parseSentence(selection);
 
+    panel.className = 'open';
+    panel.innerHTML = '';
+    let header = document.createElement('h1');
+    header.innerHTML = word;
+    let p = document.createElement('p');
+    p.innerHTML = sentence;
+    panel.appendChild(header);
+    panel.appendChild(p);
+
     console.log(selection);
     console.log(word);
     console.log(context);
     console.log(sentence);
     console.log(url);
+  }
+  else {
+    panel.className = '';
   }
 });

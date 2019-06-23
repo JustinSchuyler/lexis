@@ -13,6 +13,12 @@ chrome.contextMenus.onClicked.addListener((item) => {
     });
 });
 
+chrome.runtime.onMessage.addListener(({ action }) => {
+    if (action === 'navigate') {
+        chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });
+    }
+});
+
 chrome.browserAction.onClicked.addListener(() => {
     chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });
 });

@@ -8,8 +8,10 @@ chrome.runtime.onInstalled.addListener(() => {
 });
 
 chrome.contextMenus.onClicked.addListener((item) => {
-    chrome.tabs.create({ url: chrome.runtime.getURL('landing.html#' + item.selectionText) }); 
-})
+    chrome.tabs.query({ active: true , currentWindow: true }, (tabs) => {
+        chrome.tabs.sendMessage(tabs[0].id, { action: 'add' });
+    });
+});
 
 chrome.browserAction.onClicked.addListener(() => {
     chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });

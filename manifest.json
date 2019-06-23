@@ -12,7 +12,8 @@
     "default_title": "Open Lexis"
   },
   "permissions": [
-    "contextMenus"
+    "contextMenus",
+    "tabs"
   ],
   "content_scripts": [
     {
@@ -20,7 +21,11 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["panel.js", "app.js"],
+      "js": [
+        "selection.service.js",
+        "panel.js",
+        "app.js"
+      ],
       "css": ["app.css"]
     }
   ]

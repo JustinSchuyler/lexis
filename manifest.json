@@ -13,6 +13,7 @@
   },
   "permissions": [
     "contextMenus",
+    "storage",
     "tabs"
   ],
   "content_scripts": [

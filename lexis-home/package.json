@@ -10,6 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build:chrome.extension": "INLINE_RUNTIME_CHUNK=false react-scripts build && cp ../app.js ./build/app.js && cp ../background.js ./build/background.js && cp ../panel.js ./build/panel.js && cp ../selection.service.js ./build/selection.service.js && cp ../app.css ./build/app.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

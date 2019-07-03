@@ -15,10 +15,10 @@ chrome.contextMenus.onClicked.addListener((item) => {
 
 chrome.runtime.onMessage.addListener(({ action }) => {
     if (action === 'navigate') {
-        chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });
+        chrome.tabs.create({ url: chrome.runtime.getURL('index.html') });
     }
 });
 
 chrome.browserAction.onClicked.addListener(() => {
-    chrome.tabs.create({ url: chrome.runtime.getURL('landing.html') });
+    chrome.tabs.create({ url: chrome.runtime.getURL('index.html') });
 });

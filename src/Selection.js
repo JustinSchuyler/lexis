@@ -6,7 +6,7 @@ class Selection extends React.Component {
         super(props);
         this.state = {
             selections: data,
-            searchValue: null
+            searchValue: ''
         };
 
         // eslint-disable-next-line no-undef
@@ -45,10 +45,10 @@ class Selection extends React.Component {
                     <span>Showing {selections.length} of {this.state.selections.length}</span>
                 </header>
                 <ul>
-                    {selections.map((selection) =>
-                        <li>
+                    {selections.map((selection, i) =>
+                        <li key={i}>
                             <h1>{selection.word}</h1>
-                            <h3><i class="material-icons">keyboard_arrow_right</i>{selection.sentence}</h3>
+                            <h3><i className="material-icons">keyboard_arrow_right</i>{selection.sentence}</h3>
                         </li>
                     )}
                 </ul>

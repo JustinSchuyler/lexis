@@ -17,6 +17,25 @@ li.selection h2 a:hover {
 
 li.selection div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     cursor: pointer;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+li.selection div i {
+    transition: transform 0.2s;
+}
+
+li.selection div span {
+    margin-top: 5px;
+}
+
+li.selection.open div {
+    border-color: lightgray;
+}
+
+li.selection.open div i {
+    transform: rotate(90deg);
 }

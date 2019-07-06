@@ -1,4 +1,5 @@
 import React from 'react';
+import './Selection.css'
 import data from './test-data';
 
 class Selection extends React.Component {
@@ -47,13 +48,13 @@ class Selection extends React.Component {
                 <ul>
                     {selections.map((selection, i) =>
                         <li key={i}>
-                            <h1>{selection.word}</h1>
-                            <h3><i className="material-icons">keyboard_arrow_right</i>{selection.sentence}</h3>
+                            <h2>{selection.word}</h2>
+                            <div><i className="material-icons">keyboard_arrow_right</i>{selection.sentence}</div>
                         </li>
                     )}
                 </ul>
                 {selections.length === 0 &&
-                    <h1>There are no selections</h1>
+                    <h2>There are no selections</h2>
                 }
             </div>
         );

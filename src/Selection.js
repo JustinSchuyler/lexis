@@ -1,62 +1,31 @@
 import React from 'react';
-import './Selection.css'
-import data from './test-data';
+import './Selection.css';
 
 class Selection extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            selections: data,
-            searchValue: ''
+            open: false
         };
 
-        // eslint-disable-next-line no-undef
-        // chrome.storage.sync.get('selections', ({ selections }) => {
-        //     if (selections) {
-        //         this.setState({ selections });
-        //     }
-        // });
-        this.handleSearchChange = this.handleSearchChange.bind(this);
-        this.handleClearSearch = this.handleClearSearch.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleSearchChange(event) {
-        this.setState({ searchValue: event.target.value });
-    }
-
-    handleClearSearch() {
-        this.setState({ searchValue: '' });
+    handleClick() {
+        this.setState({
+            open: !this.state.open
+        });
     }
 
     render() {
-        const selections = this.state.selections.filter((selection) => {
-            const lowerCaseWord = selection.word.toLowerCase();
-            const searchValue = this.state.searchValue;
-
-            return !searchValue || lowerCaseWord.indexOf(searchValue) > -1;
-        });
+        const context = (this.state.open) ? this.props.selection.context : this.props.selection.sentence;
 
         return (
-            <div id="selections">
-                <header>
-                    <div>
-                        <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
-                        <button type="button" onClick={this.handleClearSearch}>Clear</button>
-                    </div>
-                    <span>Showing {selections.length} of {this.state.selections.length}</span>
-                </header>
-                <ul>
-                    {selections.map((selection, i) =>
-                        <li key={i}>
-                            <h2><a href={selection.url} target="_blank" rel="noopener noreferrer">{selection.word}</a></h2>
-                            <div><i className="material-icons">keyboard_arrow_right</i>{selection.sentence}</div>
-                        </li>
-                    )}
-                </ul>
-                {selections.length === 0 &&
-                    <h2>There are no selections</h2>
-                }
-            </div>
+            <li className="selection" onClick={this.handleClick}>
+                <h2><a href={this.props.selection.url} target="_blank" rel="noopener noreferrer">{this.props.selection.word}</a></h2>
+                <div><i className="material-icons">keyboard_arrow_right</i>{context}</div>
+            </li>
         );
     }
 }

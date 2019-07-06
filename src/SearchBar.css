@@ -1,0 +1,40 @@
+header.search-bar {
+    padding: 25px;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 25px;
+}
+
+header.search-bar div {
+    display: flex;
+    align-items: flex-end;
+}
+
+header.search-bar div input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    font-size: 1.4rem;
+    margin-right: 15px;
+    width: 400px;
+}
+
+header.search-bar div button {
+    font-size: 0.8rem;
+    border: none;
+    padding: 10px 15px;
+    width: 80px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+header.search-bar div button:hover,
+header.search-bar div button:focus {
+    background-color: #e4f4f9;
+}
+
+header.search-bar span {
+    font-size: 0.7rem;
+    color: #5a5a5a;
+    font-style: italic;
+    margin-left: 5px;
+}

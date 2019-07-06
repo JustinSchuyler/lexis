@@ -1,24 +1,30 @@
 import React from 'react';
+import data from './test-data';
 
 class Selection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selections: [],
+            selections: data,
             searchValue: null
         };
 
         // eslint-disable-next-line no-undef
-        chrome.storage.sync.get('selections', ({ selections }) => {
-            if (selections) {
-                this.setState({ selections });
-            }
-        });
+        // chrome.storage.sync.get('selections', ({ selections }) => {
+        //     if (selections) {
+        //         this.setState({ selections });
+        //     }
+        // });
         this.handleSearchChange = this.handleSearchChange.bind(this);
+        this.handleClearSearch = this.handleClearSearch.bind(this);
     }
 
     handleSearchChange(event) {
         this.setState({ searchValue: event.target.value });
+    }
+
+    handleClearSearch() {
+        this.setState({ searchValue: '' });
     }
 
     render() {
@@ -31,7 +37,13 @@ class Selection extends React.Component {
 
         return (
             <div id="selections">
-                <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
+                <header>
+                    <div>
+                        <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
+                        <button type="button" onClick={this.handleClearSearch}>Clear</button>
+                    </div>
+                    <span>Showing {selections.length} of {this.state.selections.length}</span>
+                </header>
                 <ul>
                     {selections.map((selection) =>
                         <li>

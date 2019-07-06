@@ -48,7 +48,7 @@ class Selection extends React.Component {
                 <ul>
                     {selections.map((selection, i) =>
                         <li key={i}>
-                            <h2>{selection.word}</h2>
+                            <h2><a href={selection.url} target="_blank" rel="noopener noreferrer">{selection.word}</a></h2>
                             <div><i className="material-icons">keyboard_arrow_right</i>{selection.sentence}</div>
                         </li>
                     )}

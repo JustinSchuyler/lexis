@@ -38,3 +38,31 @@ header span {
     font-style: italic;
     margin-left: 5px;
 }
+
+ul {
+    list-style: none;
+    padding: 5px 40px 40px;
+}
+
+ul li {
+    margin-bottom: 35px;
+}
+
+ul li h2 {
+    margin: 0 0 3px;
+}
+
+ul li h2 a {
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+ul li h2 a:hover {
+    text-decoration: underline;
+}
+
+ul li div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

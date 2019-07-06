@@ -18,16 +18,12 @@ li.selection h2 a:hover {
 }
 
 li.selection h2 a.sub-link {
-    visibility: hidden;
+    color: #a0a0a0;
     margin-left: 15px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     display: flex;
     align-items: center;
     text-decoration: none;
-}
-
-li.selection h2:hover a.sub-link {
-    visibility: visible;
 }
 
 li.selection h2 a.sub-link:hover {
@@ -35,7 +31,8 @@ li.selection h2 a.sub-link:hover {
 }
 
 li.selection h2 a.sub-link i {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-right: 1px;
 }
 
 li.selection div {

@@ -4,7 +4,8 @@ class Selection extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selections: []
+            selections: [],
+            searchValue: null
         };
 
         // eslint-disable-next-line no-undef
@@ -13,13 +14,24 @@ class Selection extends React.Component {
                 this.setState({ selections });
             }
         });
+        this.handleSearchChange = this.handleSearchChange.bind(this);
+    }
+
+    handleSearchChange(event) {
+        this.setState({ searchValue: event.target.value });
     }
 
     render() {
-        const selections = this.state.selections;
+        const selections = this.state.selections.filter((selection) => {
+            const lowerCaseWord = selection.word.toLowerCase();
+            const searchValue = this.state.searchValue;
+
+            return !searchValue || lowerCaseWord.indexOf(searchValue) > -1;
+        });
 
         return (
             <div id="selections">
+                <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange} />
                 <ul>
                     {selections.map((selection) =>
                         <li>

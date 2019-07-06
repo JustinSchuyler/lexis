@@ -4,6 +4,8 @@ li.selection {
 
 li.selection h2 {
     margin: 0 0 3px;
+    display: flex;
+    align-items: flex-end;
 }
 
 li.selection h2 a {
@@ -15,9 +17,31 @@ li.selection h2 a:hover {
     text-decoration: underline;
 }
 
+li.selection h2 a.sub-link {
+    visibility: hidden;
+    margin-left: 15px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+li.selection h2:hover a.sub-link {
+    visibility: visible;
+}
+
+li.selection h2 a.sub-link:hover {
+    color: #4570bd;
+}
+
+li.selection h2 a.sub-link i {
+    font-size: 1.2rem;
+}
+
 li.selection div {
     display: flex;
     align-items: flex-start;
+    width: 850px;
     cursor: pointer;
     padding: 10px;
     border: 1px solid transparent;

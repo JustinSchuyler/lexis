@@ -48,7 +48,7 @@ class Selection extends React.Component {
                     {selections.map((selection) =>
                         <li>
                             <h1>{selection.word}</h1>
-                            <h3>{selection.context}</h3>
+                            <h3><i class="material-icons">keyboard_arrow_right</i>{selection.sentence}</h3>
                         </li>
                     )}
                 </ul>

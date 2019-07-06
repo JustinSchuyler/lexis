@@ -18,8 +18,21 @@ class Selection extends React.Component {
         });
     }
 
+    emphasizeWord(word, context) {
+        const index = context.indexOf(word);
+
+        return (
+            <span>
+                {context.substr(0, index)}
+                <b>{context.substr(index, word.length)}</b>
+                {context.substr(index + word.length)}
+            </span>
+        );
+    }
+
     render() {
         const context = (this.state.open) ? this.props.selection.context : this.props.selection.sentence;
+        const formattedContext = this.emphasizeWord(this.props.selection.word, context);
         const liClasses = (this.state.open) ? 'selection open' : 'selection';
         const title = (this.state.open) ? 'Collapse context' : 'Click for context';
 
@@ -28,7 +41,7 @@ class Selection extends React.Component {
                 <h2><a href={this.props.selection.url} target="_blank" rel="noopener noreferrer">{this.props.selection.word}</a></h2>
                 <div>
                     <i className="material-icons">keyboard_arrow_right</i>
-                    <span>{context}</span>
+                    <span>{formattedContext}</span>
                 </div>
             </li>
         );

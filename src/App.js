@@ -1,51 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import data from './test-data';
 import SearchBar from './SearchBar';
 import Selections from './Selections';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchValue: '',
-      selections: data
-    };
+function App() {
+  const [selections] = useState(data);
+  const [filteredSelections, setFilteredSelections] = useState(data);
 
-    // eslint-disable-next-line no-undef
-    // chrome.storage.sync.get('selections', ({ selections }) => {
-    //     if (selections) {
-    //         this.setState({ selections });
-    //     }
-    // });
+  // eslint-disable-next-line no-undef
+  // chrome.storage.sync.get('selections', ({ selections }) => {
+  //     if (selections) {
+  //         this.setState({ selections });
+  //     }
+  // });
 
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-  }
-
-  handleSearchChange(searchValue) {
-    this.setState({ searchValue });
-  }
-
-  filter(selections, searchValue) {
-    return selections.filter((selection) => {
+  const handleSearchChange = (searchValue) => {
+    setFilteredSelections(selections.filter((selection) => {
       const lowerCaseWord = selection.word.toLowerCase();
-      return !searchValue || lowerCaseWord.indexOf(searchValue) > -1;
-    });
+      return !searchValue || lowerCaseWord.includes(searchValue);
+    }));
   }
 
-  render() {
-    const selections = this.filter(this.state.selections, this.state.searchValue);
-
-    return (
-      <div className="App">
-        <SearchBar
-          onSearchChange={this.handleSearchChange}
-          countShown={selections.length}
-          countTotal={this.state.selections.length}
-        />
-        <Selections selections={selections} />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <SearchBar
+        onSearchChange={handleSearchChange}
+        countShown={filteredSelections.length}
+        countTotal={selections.length}
+      />
+      <Selections selections={filteredSelections} />
+    </div>
+  );
 }
 
 export default App;
